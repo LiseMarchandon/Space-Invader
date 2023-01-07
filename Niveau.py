@@ -48,26 +48,26 @@ class Niveau:
         compteurX = 0 
         deplacementDroite = True 
         tableau = [[0 for i in range(self.__ligne)]for i in range(self.__colonne)] 
-        ennemyBase = Ennemie("test","souris2.png, 0, 0, 0, 25")
+        ennemyBase = Ennemie("test","souris2.png", 0, 0, 0, 25)
         spriteEnnemy = PhotoImage(file= str(ennemyBase.getImg()))
-        offfsetX = spriteEnnemy.width()
-        offfsetY = spriteEnnemy.height()
+        offsetX = spriteEnnemy.width()
+        offsetY = spriteEnnemy.height()
         separationX = 50
         separationY = 70
         for i in range(self.__colonne):
             for j in range(self.__ligne):
-                posX = offfsetX + separationX*i
-                posY = offfsetY + separationY*j
+                posX = offsetX + separationX*i
+                posY = offsetY + separationY*j
                 ennemy = Ennemie("Alien"+ str(i)+str(j), "souris2.png", str(i)+str(j), posX, posY, 25)
                 ennemy.affichageEnnemy(spriteEnnemy)
                 tableau[i][j] = ennemy
         self.deplacementEnnemies(vaisseau)
     
     def deplacementEnnemies(self, vaisseau):
-        '''Focntion qui gère le déplacement des ennemies'''
+        '''Fonction qui gère le déplacement des ennemies'''
         global tableau, spriteEnnemy, compteurX, compteurY, deplacementDroite, offsetX, offsetY
         descente = False
-        a = (Fonctions.Largeur / offsetX - self.__colonne - 1)*5
+        a = (Fonctions.Largeur / offsetX - self.__colonne - 1) * 5
         if(compteurX <= 0):
             deplacementDroite = True
             descente = True

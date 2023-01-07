@@ -17,7 +17,7 @@ class Ennemie:
         self.__id= id
         self.__x = x
         self.__y = y 
-        self.__points 
+        self.__points = points
         self.__sprite =  PhotoImage(file = str(self.__img))
     
     '''Fonctions permettant de récupérer les attributs de l'obejt'''
@@ -58,6 +58,8 @@ class Ennemie:
         '''Affiche de l'ennemi quand celui-ci est mort'''
         spriteMort = sprite
         img_mort = Fonctions.Canevas.create_image(self.__x, self.__y, image = spriteMort)
+        self.__imgMort = img_mort
+        Fonctions.Canevas.image = spriteMort
     
     def attaque(self):
         '''Lance un missile ennemie'''

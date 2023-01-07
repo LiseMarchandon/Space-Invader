@@ -20,9 +20,9 @@ Fonctions.Hauteur = 600
 Fonctions.posX = Fonctions.Largeur /2
 
 '''Fenêtre du jeu'''
-Fonctions.Canevas = Canvas(Fonctions.maFenetre, width = Fonctions.largeur, heightf= Fonctions.Hauteur)
+Fonctions.Canevas = Canvas(Fonctions.maFenetre, width = Fonctions.Largeur, height = Fonctions.Hauteur)
 spritebg = PhotoImage(file = "ciel.png")
-image_bg = Fonctions.Canevas.create_image(Fonctions.Largeur / 2, Fonctions.Hauteur / 2, ilage = spritebg)
+image_bg = Fonctions.Canevas.create_image(Fonctions.Largeur / 2, Fonctions.Hauteur / 2, image = spritebg)
 Fonctions.Canevas.image =spritebg
 Fonctions.spriteVaisseau = PhotoImage(file = str(joueur.getImg()))
 Fonctions.img_vaisseau = Fonctions.Canevas.create_image(Fonctions.posX, Fonctions.Hauteur - 30, image = Fonctions.spriteVaisseau)
