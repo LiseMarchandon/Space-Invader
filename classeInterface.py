@@ -1,5 +1,5 @@
 from tkinter import Tk, Button, Label, StringVar, Frame, PhotoImage, Canvas
-from classejoueur import Joueur
+from Joueur import Joueur
 
 class Interface :
     def __init__(self):
@@ -41,7 +41,6 @@ class Interface :
         self.__boutonCommencer.pack()
 
         
-    
     def LancementJeu(self):
         self.__joueur = Joueur(500,650) 
         self.__imagejoueur = self.__Canevas.create_image(500,650, image = self.__chat)
@@ -49,7 +48,10 @@ class Interface :
 
         self.Jeu()
 
-    def Jeu(self):
+    def Affichage():
+
+'''
+def Jeu(self):
         self.__Canevas.bind('<Left>', self.MouvementJoueurLi())
         self.__Canevas.bind('<Right>', self.MouvementJoueurRi())
 
@@ -60,18 +62,4 @@ class Interface :
         self.__positionx = self.__joueur.RecupPositionX()
         self.__positiony = self.__joueur.RecupPositionY()
         self.__Canevas.move(self.__joueur, self.__positionx,self.__positiony )
-    
-    def MouvementJoueurLi(self):
-        self.__joueur.MouvementJoueurL()
-        self.__positionx = self.__joueur.RecupPositionX()
-        self.__positiony = self.__joueur.RecupPositionY()
-        self.__Canevas.move(self.__joueur, self.__positionx,self.__positiony )
-
-
-
-
-        
-        
-
-
-
+'''
