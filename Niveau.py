@@ -1,3 +1,9 @@
+'''
+ce fichier a pour but de regrouper les Fonctions générales du jeu 
+date de début: 08/01/2022
+MARIOTTE Mélanie & MARCHANDON Lise
+To Do: 
+'''
 from tkinter import PhotoImage, Label, StringVar
 from tkinter.messagebox import askyesno
 import Fonctions 
@@ -61,7 +67,7 @@ class Niveau:
         '''Focntion qui gère le déplacement des ennemies'''
         global tableau, spriteEnnemy, compteurX, compteurY, deplacementDroite, offsetX, offsetY
         descente = False
-        a = (Fonctions.Largeur/offset - self.__colonne - 1)*5
+        a = (Fonctions.Largeur / offsetX - self.__colonne - 1)*5
         if(compteurX <= 0):
             deplacementDroite = True
             descente = True
@@ -73,7 +79,7 @@ class Niveau:
             decalageX = offsetX / 5
         else:
             decalageX = -offsetX / 5
-            compteurX = -=1 
+            compteurX -= 1 
         if (vaisseau.isAlive()):
             for i in range(len(tableau)):
                 for j in range(len(tableau[0])):
@@ -84,7 +90,7 @@ class Niveau:
                             tableau[i][j].setPos(pX,pY)
                         else:
                             tableau[i][j].setPos(pX + decalageX, pY)
-        if (vaisseau.isAlive() and self.__itsOver == False ans self.__victoire == False):
+        if (vaisseau.isAlive() and self.__itsOver == False and self.__victoire == False):
             Fonctions.maFenetre.after(100, self.deplacementEnnemies, vaisseau)
     
     #def attaqueEnnemy(self,vaisseau):

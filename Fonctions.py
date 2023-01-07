@@ -33,7 +33,7 @@ def Clavier(event):
         m.afficherMissile()
         tir()
 
-    Canevas.coords(image_vaisseau, posX, Hauteur - 30)
+    Canevas.coords(img_vaisseau, posX, Hauteur - 30)
 
 '''Fonctions qui permettent de limiter la cadence des tirs'''
 
