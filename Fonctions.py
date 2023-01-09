@@ -1,34 +1,38 @@
+#-*- coding: utf-8 -*-
+#Header
 '''
-ce fichier a pour but de regrouper les Fonctions générales du jeu 
-date de début: 04/01/2022
+Ce fichier a pour but de regrouper les fonctions générales du Jeu 
+date de début : 04/01/2022
 MARIOTTE Mélanie & MARCHANDON Lise
 To Do: 
 '''
-
+#Importation nécessaire 
 from tkinter.messagebox import askyesno
 
-'''Initialisation'''
-
-L_missile= []
+#Initialisation
+L_missile = []
 nbmissile = 0
-Touche = True
+canTouche = True
 shot_rate = 500
 
-''' Fonction qui gère les touches du clavier '''
+#Fonctions du programme
 
 def Clavier(event):
-
+    '''
+    La fonction gère les touches du clavier, et les déplacements qu'elles engendrent
+    entrée : pression d'une touche (event)
+    sorties : 
+    '''
     from Missile import Missile #importation à l'intérieur car problème du cycle
 
-    global posX, img_vaisseau, Canevas, Hauteur, Largeur, maFenetre, L_missile, nbmissile, spriteVaisseau, Touche
+    global posX, img_vaisseau, Canevas, Hauteur, Largeur, maFenetre, L_missile, nbmissile, spriteVaisseau, canTouche #Récupération des données utiles
 
     touche = event.keysym
-    if touche == "d" and posX + 50 < Largeur:
+    if touche == "right" and posX + 50 < Largeur:
         posX += 20
-    if touche == "q" and posX - 50 > 0:
+    if touche == "left" and posX - 50 > 0:
         posX -= 20
-
-    if touche == "space" and Touche == True : 
+    if touche == "space" and canTouche == True:
         m = Missile(posX, Hauteur - 50 - spriteVaisseau.height() / 2, nbmissile, -20, "missile2.png")
         nbmissile += 1
         L_missile.append(m)
