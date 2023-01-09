@@ -11,15 +11,19 @@ import random
 from Ennemie import Ennemie
 
 class Niveau:
+
     '''Initialisation de l'objet niveau'''
+
     def __init__(self, ligne, colonne):
         self.__ligne = ligne
         self.__colonne = colonne
         self.__itsOver = False
         self.__label_score = None
         self.__victoire = False
+        self.__tab_Special = []
     
     '''Fonctions permettant de récupérer les attributs de l'objet'''
+
     def getItsOver(self):
         return self.__itsOver
     
@@ -27,7 +31,9 @@ class Niveau:
         return self.__victoire
     
     def setupLevel(self, vaisseau):
+
         '''Initialise les paramètres du niveau'''
+
         self.resetLevel(vaisseau)
         Fonctions.Canevas.bind("<KeyPress>", Fonctions.Clavier)
         self.setupEnnemies(vaisseau)
@@ -44,15 +50,15 @@ class Niveau:
     def setupEnnemies(self, vaisseau):
 
         '''Gestion du tableau d'ennemies'''
+
         from Ennemie import Ennemie
         global tableau, spriteEnnemy, compteurX, compteurY, deplacementDroite, offsetX, offsetY
         
         compteurX = 0 
         deplacementDroite = True 
         tableau = [[0 for i in range(self.__ligne)] for i in range(self.__colonne)] 
-        #print(tableau)
         ennemyBase = Ennemie("test","souris2.png", 0, 0, 0, 25)
-        spriteEnnemy = PhotoImage(file= str(ennemyBase.getImg()))
+        spriteEnnemy = PhotoImage(file = str(ennemyBase.getImg()))
         offsetX = spriteEnnemy.width()
         offsetY = spriteEnnemy.height()
         separationX = 50
@@ -102,14 +108,15 @@ class Niveau:
     def attaqueEnnemy(self,vaisseau):
 
         '''Tire aléatoire des ennemies'''
+
         if(vaisseau.isAlive()):
-            tirage = random.randit(0, self.__colonne - 1)
+            tirage = random.randint(0, self.__colonne - 1)
             for i in range(self.__ligne):
                 if(type(tableau[tirage][self.__ligne - i - 1]) != type(None)):
-                    tableau[tableau][self.__ligne - i - 1].attaque()
+                    tableau[tirage][self.__ligne - i - 1].attaque()
                     break 
-                if(vaisseau.isAlive() and self.__itsOver == False and self.__victoire == False):
-                    Fonctions.maFenetre.after(500, self.attaqueEnnemy, vaisseau)
+        if(vaisseau.isAlive() and self.__itsOver == False and self.__victoire == False):
+            Fonctions.maFenetre.after(500, self.attaqueEnnemy, vaisseau)
 
 
     def resetLevel(self, vaisseau):
@@ -145,7 +152,7 @@ class Niveau:
             for j in i:
                 pat.append(j)
         L_rocher = [[None for i in range(len(pat))] for j in range(2)]
-        for j in range(len(L_rocher)):
+        for i in range(len(L_rocher)):
             for j in range(len(L_rocher[0])):
                 if(pat[j] == 1):
                     roc = Bouclier("panier.png", 25 + 25 * j, 450 + 25 * i, str(i)+str(j))
@@ -176,14 +183,17 @@ class Niveau:
         Fonctions.maFenetre.after(200, self.affichageScore, vaisseau, sc)
 
     def victoire(self):
+
         '''Test si on a un cas de victoire'''
+
         global tableau
+
         self.__victoire = True 
         for i in range(len(tableau)):
             for j in range(len(tableau[0])):
                 if type(tableau[i][j]) != type(None):
                     self.__victoire = False
-        Fonctions.maFenetre.after(100, self.victoire)
+        Fonctions.maFenetre.after(100, self.__victoire)
 
     def finNiveau(self, vaisseau):
 
@@ -215,7 +225,7 @@ class Niveau:
 
         pX, pY = special.getPos()
         versDroite = direction
-        if pX + sprite.width() / 2 < 0 and versDroite == True:
+        if pX + sprite.width() / 2 < Fonctions.Largeur and versDroite == True:
             versDroite = False
         elif pX - sprite.width() / 2 < 0 and versDroite == False:
             versDroite = False
