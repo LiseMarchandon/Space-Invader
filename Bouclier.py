@@ -11,6 +11,7 @@ import Fonctions
 class Bouclier:
 
     '''Initialisation d'un bouclier'''
+
     def __init__(self, img, posX, posY, id):
         self.__img = img
         self.__posX = posX
@@ -19,6 +20,7 @@ class Bouclier:
         self.__sprite = PhotoImage(file = str(self.__img))
     
     '''Fonctions permmettant de récuperer les attributs de l'objet'''
+
     def getPos(self):
         return [self.__posX, self.__posY]
     
@@ -35,15 +37,17 @@ class Bouclier:
         id = self.__id
         return int(id[0], int(id[1:]))
     
-    '''Fonctions permettant de modifier les attributs de l'objet'''
+    '''Fonction permettant de modifier les attributs de l'objet'''
+
     def setPos(self, x, y):
         self.__x = x
         self.__y = y
     
     '''Affichage d'un bloc de bouclier'''
+
     def affichageBouclier(self, sprite):
         spriteShield = sprite
-        img_shield = Fonctions.Canevas.create_image(self.__posX, self.__posY, imgage = spriteShield)
+        img_shield = Fonctions.Canevas.create_image(self.__posX, self.__posY, image = spriteShield)
         self.__img = img_shield
         Fonctions.Canevas.image = spriteShield 
     

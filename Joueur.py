@@ -44,7 +44,7 @@ class Joueur:
     def isAlive(self):
         return self.__vie != 0
     
-    '''Focntion qui permet l'affichage d'un coeur de vie'''
+    '''Fonction qui permet l'affichage d'un coeur de vie'''
     
     def afficherVie(self,sprite, posX, posY):
         spriteCoeur = sprite

@@ -9,7 +9,9 @@ from tkinter import PhotoImage
 import Fonctions
 
 class Ennemie:
+
     '''Initialisation de l'objet ennemie'''
+
     def __init__(self, nom, image,id, x, y, points):
         self.__nom = nom
         self.__img = image
@@ -37,6 +39,9 @@ class Ennemie:
     def getPos(self):
         return self.__sprite
     
+    def getSprite(self):
+        return self.__sprite
+
     '''Fonctions permettant de modifier les attributs de l'objet'''
 
     def setIdent(self):
@@ -46,26 +51,35 @@ class Ennemie:
         self.__x = x
         self.__y = y
         Fonctions.Canevas.coordss(self.__img, self.__x, self.__y)
+    
+    ''''''
 
     def affichageEnnemy(self, sprite):
+
         '''Affichage de l'ennemie vivant'''
+
         spriteEnnemy = sprite
         img_ennemy = Fonctions.Canevas.create_image(self.__x, self.__y, image = spriteEnnemy)
         self.__img = img_ennemy 
         Fonctions.Canevas.image = spriteEnnemy
 
     def affichageEnnemyMort(self, sprite):
+
         '''Affiche de l'ennemi quand celui-ci est mort'''
+
         spriteMort = sprite
         img_mort = Fonctions.Canevas.create_image(self.__x, self.__y, image = spriteMort)
         self.__imgMort = img_mort
         Fonctions.Canevas.image = spriteMort
     
     def attaque(self):
+
         '''Lance un missile ennemie'''
+
         from Missile import Missile
-        self.__missile = Missile(self.__x, self.__y +70, Fonctions.nbmissile, 20, "Image missile")
+
+        self.__missile = Missile(self.__x, self.__y +70, Fonctions.nbmissile, 20, "missilesouris.png")
         Fonctions.nbmissile += 1
-        Fonctions.liste_missile.append(self.__missile)
+        Fonctions.L_missile.append(self.__missile)
         self.__missile.afficherMissile()
 

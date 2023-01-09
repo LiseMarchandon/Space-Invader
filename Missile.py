@@ -9,7 +9,9 @@ from tkinter import PhotoImage
 import Niveau
 
 class Missile:
+
     '''Initialisation d'un missile'''
+
     def __init__(self, posx, posy, num,speed, img):
         self.__name = num
         self.__posx = posx
@@ -20,6 +22,7 @@ class Missile:
         self.__speed = speed
     
     '''Fonctions permettant de récupérer les attributs de l'objet'''
+
     def getImg(self):
         return self.__img
     
@@ -30,6 +33,14 @@ class Missile:
         return self.__speed
     
     '''Fonctions permettant de modifier les attributs de l'objet'''
+
+    def setPos(self, x, y):
+        self.__posx = x
+        self.__posy = y
+        Fonctions.Canevas.coords(self.__img, self.__posx, self.__posy)
+
+    '''Affichage d'un missile'''
+
     def afficherMissile(self):
         self.__sprite = PhotoImage(file= self.__img)
         img_missile = Fonctions.Canevas.create_image(self.__posx, self.__y, image = self.__sprite)
@@ -37,14 +48,16 @@ class Missile:
         Fonctions.Canevas.image = self.__sprite
     
     '''Vérification de l'existence du missile'''
+
     def isAlive(self):
         return self.__isAlive
     
     '''Collision avec un ennemie'''
+
     def collisionEnnemy(self, vaisseau):
         tab_ennemy = Niveau.tableau
         dX = Niveau.offsetX
-        dY = Niveau.oofsetY
+        dY = Niveau.offsetY
         liste_ennemies = []
         for i in tab_ennemy:
             for j in tab_ennemy:
@@ -58,7 +71,7 @@ class Missile:
                 if Pos[0] - dX / 2 < self.__posx < Pos[0] + dX / 2 and Pos[1] - dY / 2 < self.__posy < Pos[1] +dY:
                     i, j = ennemy.getIdent()
                     Fonctions.Canevas.delete(tab_ennemy[i][j].getImg())
-                    spriteMort =  PhotoImage(file = "Image de mechant mort")
+                    spriteMort =  PhotoImage(file = "sourismorte.png")
                     tab_ennemy[i][j].affichageEnnemyMort(spriteMort)
                     Fonctions.maFenetre.after(200, self.detruireEnnemy, tab_ennemy[i][j].getImgMort())
                     self.__isAlive = False
@@ -66,10 +79,11 @@ class Missile:
                     Niveau.tableau[i][j] = None
     
     '''Collision avec un joueur'''
+
     def collisionJoueur(self, vaisseau):
         dX = Fonctions.spriteVaisseau.width()
         dY = Fonctions.spriteVaisseau.height()
-        if Fonctions.posX - dX / 2 < self.__posy < Fonctions.Hauteur - 30 + dX / 2 and Fonctions.Hauteur - 30 - dY / 2 < self.__posy < Fonctions.Hauteur - 30 + dY / 2:
+        if Fonctions.posX - dX / 2 < self.__posx < Fonctions.posX - 30 + dX / 2 and Fonctions.Hauteur - 30 - dY / 2 < self.__posy < Fonctions.Hauteur - 30 + dY / 2:
             self.__isAlive = False 
             Fonctions.Canevas.delete(Niveau.tabCoeur[vaisseau.getVie() - 1])
             vaisseau.setVie(vaisseau.getVie() - 1)
@@ -77,7 +91,7 @@ class Missile:
 
     '''Collision avec un bouclier'''
     def collisionShield(self):
-        b_shield = Niveau.liste_rocher
+        b_shield = Niveau.L_rocher
         dX = 25
         dY = 25 
         liste_shield = []
@@ -94,9 +108,10 @@ class Missile:
                     i,j = shield.getIdent()
                     Fonctions.Canevas.delete(b_shield[i][j].getImg())
                     self.__isAlive =  False
-                    Niveau.liste_rocher[i][j] = None
+                    Niveau.L_rocher[i][j] = None
 
     '''Détruit le missile'''
+    
     def detruireEnnemy(self, img):
         Fonctions.Canevas.delete(img)
 

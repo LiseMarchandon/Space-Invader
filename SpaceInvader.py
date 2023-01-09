@@ -32,8 +32,9 @@ Fonctions.Canevas.focus_set()
 
 '''Menu du jeu'''
 menubar = Menu(Fonctions.maFenetre)
-menu1 = Menu(menubar,tearoff = 0)
-menu1.add_command(label="New Game", command= Fonctions.maFenetre.destroy)
+menu1 = Menu(menubar, tearoff = 0)
+vaisseau = joueur
+menu1.add_command(label="New Game", command= lambda vaisseau : niveau.setupLevel(vaisseau))
 vaisseau = joueur
 niveau.setupLevel(vaisseau)
 menu1.add__separator()
