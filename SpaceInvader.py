@@ -5,7 +5,7 @@ MARIOTTE Mélanie & MARCHANDON Lise
 To Do: 
 '''
 
-from tkinter import Tk, Button, Label, StringVar, Frame, PhotoImage, Canvas, Menu
+from tkinter import Tk, PhotoImage, Canvas, Menu
 from Joueur import Joueur
 from Niveau import Niveau
 import Fonctions
@@ -23,7 +23,7 @@ Fonctions.posX = Fonctions.Largeur /2
 Fonctions.Canevas = Canvas(Fonctions.maFenetre, width = Fonctions.Largeur, height = Fonctions.Hauteur)
 spritebg = PhotoImage(file = "ciel.png")
 image_bg = Fonctions.Canevas.create_image(Fonctions.Largeur / 2, Fonctions.Hauteur / 2, image = spritebg)
-Fonctions.Canevas.image =spritebg
+Fonctions.Canevas.image = spritebg
 Fonctions.spriteVaisseau = PhotoImage(file = str(joueur.getImg()))
 Fonctions.img_vaisseau = Fonctions.Canevas.create_image(Fonctions.posX, Fonctions.Hauteur - 30, image = Fonctions.spriteVaisseau)
 Fonctions.Canevas.image = Fonctions.spriteVaisseau
@@ -34,15 +34,14 @@ Fonctions.Canevas.focus_set()
 menubar = Menu(Fonctions.maFenetre)
 menu1 = Menu(menubar, tearoff = 0)
 vaisseau = joueur
-menu1.add_command(label="New Game", command= lambda vaisseau : niveau.setupLevel(vaisseau))
+menu1.add_command(label="Nouvelle Partie", command= lambda vaisseau : niveau.setupLevel(vaisseau))
 vaisseau = joueur
-niveau.setupLevel(vaisseau)
-menu1.add__separator()
-menu1.add__command(label="Exit", command = Fonctions.maFenetre.destroy)
-menubar.add__cascade(label = "Game", menu = menu1)
+menu1.add_separator()
+menu1.add_command(label="Quitter", command = Fonctions.maFenetre.destroy)
+menubar.add_cascade(label = "Jeu", menu = menu1)
 menu2 = Menu(menubar, tearoff = 0)
-menu2.add__command(label= "About")
-menubar.add__cascade(label="Help", menu=menu2)
+menu2.add_command(label= "À propos")
+menubar.add_cascade(label="Aide", menu=menu2)
 Fonctions.maFenetre.config(menu=menubar)
 
 '''Affichage des éléments'''
