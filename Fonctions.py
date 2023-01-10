@@ -18,11 +18,13 @@ shot_rate = 500
 #Fonctions du programme
 
 def Clavier(event):
+
     '''
     La fonction gère les touches du clavier, et les déplacements qu'elles engendrent
     entrée : pression d'une touche (event)
     sorties : 
     '''
+    
     from Missile import Missile #importation à l'intérieur car problème du cycle
 
     global posX, img_vaisseau, Canevas, Hauteur, Largeur, maFenetre, L_missile, nbmissile, spriteVaisseau, canTouche #Récupération des données utiles

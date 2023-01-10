@@ -66,7 +66,7 @@ class Ennemie:
     def affichageEnnemyMort(self, sprite):
 
         '''Affiche de l'ennemi quand celui-ci est mort'''
-
+        
         spriteMort = sprite
         img_mort = Fonctions.Canevas.create_image(self.__x, self.__y, image = spriteMort)
         self.__imgMort = img_mort

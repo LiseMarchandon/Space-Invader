@@ -25,14 +25,28 @@ class Niveau:
     '''Fonctions permettant de récupérer les attributs de l'objet'''
 
     def getItsOver(self):
+        '''
+        La fonction renvoie True ou False pour vérifier si la partie est finie
+        entrée : 
+        sorties : True ou False 
+        '''
         return self.__itsOver
     
     def getVictoire(self):
+        '''
+        La fonction renvoie True ou False pour vérifier si la partie est finie
+        entrée : 
+        sorties : True ou False 
+        '''
         return self.__victoire
     
     def setupLevel(self, vaisseau):
 
-        '''Initialise les paramètres du niveau'''
+        '''
+        La fonction initialise les paramètres du niveau
+        entrée : le joueur en question
+        sorties : pas de sortie
+        '''
 
         self.resetLevel(vaisseau)
         Fonctions.Canevas.bind("<KeyPress>", Fonctions.Clavier)
@@ -49,7 +63,11 @@ class Niveau:
     
     def setupEnnemies(self, vaisseau):
 
-        '''Gestion du tableau d'ennemies'''
+        '''
+        La fonction gère le tableau (liste) des ennemies
+        entrée : le joueur en question
+        sorties : pas de sortie 
+        '''
 
         from Ennemie import Ennemie
         global tableau, spriteEnnemy, compteurX, compteurY, deplacementDroite, offsetX, offsetY
@@ -74,7 +92,11 @@ class Niveau:
     
     def deplacementEnnemies(self, vaisseau):
 
-        '''Fonction qui gère le déplacement des ennemies'''
+        '''
+        La fonction gère le déplacement des ennemies
+        entrée : le joueur en question
+        sorties :  pas de sortie 
+        '''
 
         global tableau, spriteEnnemy, compteurX, compteurY, deplacementDroite, offsetX, offsetY
         
@@ -107,7 +129,11 @@ class Niveau:
     
     def attaqueEnnemy(self,vaisseau):
 
-        '''Tire aléatoire des ennemies'''
+        '''
+        La fonction permet de générer des tirs aléatoires de la part des ennemies
+        entrée : le joueur en question
+        sorties :  pas de sortie
+        '''
 
         if(vaisseau.isAlive()):
             tirage = random.randint(0, self.__colonne - 1)
@@ -121,7 +147,11 @@ class Niveau:
 
     def resetLevel(self, vaisseau):
 
-        '''Réinitialisation du niveau en cas de victoire ou défaite'''
+        '''
+        La fonction réinitialise le niveau en cas de victoire ou défaite 
+        entrée : le joueur en question
+        sorties : pas de sortie
+        '''
 
         vaisseau.setVie(3)
         for i in range(len(Fonctions.L_missile)):
@@ -134,7 +164,11 @@ class Niveau:
     
     def setupShield(self):
 
-        '''Initialisation du tableau du bouclier'''
+        '''
+        La fonction initialise le tableau (liste) des obstacles, ici ce sont des paniers
+        entrée : 
+        sorties :  
+        '''
         
         from Bouclier import Bouclier
         global spriteShield, L_rocher, pattern_rocher
@@ -161,7 +195,11 @@ class Niveau:
         
     def setupHUD(self, vaisseau):
 
-        '''Initialise l'interface du jeu comme les points de vie'''
+        '''
+        La fonction initialise l'interface du jeu et les points de vie 
+        entrée : le joueur en question
+        sorties :  pas de sortie
+        '''
 
         global spriteCoeur, tabCoeur, label_score
         
@@ -177,14 +215,23 @@ class Niveau:
 
     def affichageScore(self, vaisseau, sc):
 
-        '''Affiche le score'''
+        '''
+        La fonction permet d'afficher le score 
+        entrée : le joueur en question
+        sorties :  
+        '''
 
         sc.set("Score : " + str(vaisseau.getScore()))
         Fonctions.maFenetre.after(200, self.affichageScore, vaisseau, sc)
 
+
     def victoire(self):
 
-        '''Test si on a un cas de victoire'''
+        '''
+        La fonction test si on a un cas de victoire
+        entrée : 
+        sorties : pas de sortie
+        '''
 
         global tableau
 
@@ -197,7 +244,11 @@ class Niveau:
 
     def finNiveau(self, vaisseau):
 
-        '''Apparition d'une fenêtre en  cas de victoire'''
+        '''
+        La fonction permet d'afficher une fenêtre en cas de victoire
+        entrée : le joueur en question
+        sorties :  
+        '''
 
         if self.getVictoire() == True:
             if askyesno("Victoire", "Voulez-vous rejouer?"):
@@ -209,7 +260,11 @@ class Niveau:
     
     def specialEnnemy(self):
 
-        '''Apparition d'un ennemie special'''
+        '''
+        La fonction fait apparaître l'ennemi special (gros rat) qui quand est touché rapporte plus de points
+        entrée : 
+        sorties :  
+        '''
 
         global spriteSpecial
 
@@ -219,9 +274,14 @@ class Niveau:
         self._tab_Special.append(special)
         Fonctions.maFenetre.after(100, self.depSpecial, special, spriteSpecial, True, 0)
 
+
     def depSpecial(self, special, sprite, direction, compteur):
 
-        '''Gérer le déplacement de l'ennemie special et le fait apparaîte quelques secondes'''
+        '''
+        La fonction gère le déplacement de l'ennemi special et le fait apparâitre quelques secondes
+        entrée : l'ennemi special, la direction de son déplacement (droite ou gauche), compteur qui permet de définir le temps d'apparition, sprite qui récupère l'image du méchant spécial
+        sorties :  
+        '''
 
         pX, pY = special.getPos()
         versDroite = direction
