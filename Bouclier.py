@@ -4,51 +4,43 @@ date de début: 08/12/2022
 MARIOTTE Mélanie & MARCHANDON Lise
 To Do: 
 '''
-
 from tkinter import PhotoImage
 import Fonctions
 
 class Bouclier:
-
-    '''Initialisation d'un bouclier'''
-
-    def __init__(self, img, posX, posY, id):
-        self.__img = img
-        self.__posX = posX
-        self.__posY = posY
-        self.__id = id
-        self.__sprite = PhotoImage(file = str(self.__img))
-    
-    '''Fonctions permmettant de récuperer les attributs de l'objet'''
-
+    """Initialisation d'un bouclier"""
+    def __init__(self, img, posX, posY, ident):
+        self._img = img
+        self._posX = posX
+        self._posY = posY
+        self._ident = ident
+        self._sprite = PhotoImage(file = str(self._img))
+        
+    """Fonctions permettant de recupérer les attributs de l'objet à l'extérieur"""
     def getPos(self):
-        return [self.__posX, self.__posY]
-    
+        return [self._posX, self._posY]
+
     def getImg(self):
-        return self.__img
-    
+        return self._img
+
     def getTaille(self):
-        return self.__ligne, self.__colonne
-    
+        return self._ligne, self._colonne
+
     def getSprite(self):
-        return self.__sprite 
+        return self._sprite
     
     def getIdent(self):
-        id = self.__id
-        return int(id[0], int(id[1:]))
-    
-    '''Fonction permettant de modifier les attributs de l'objet'''
-
+        ident = self._ident
+        return int(ident[0]),int(ident[1:])
+        
+    """Fonctions permettant de modifier les attributs de l'objet à l'extérieur"""
     def setPos(self, x, y):
-        self.__x = x
-        self.__y = y
+        self._posX = x
+        self._posY = y
     
-    '''Affichage d'un bloc de bouclier'''
-
-    def affichageBouclier(self, sprite):
+    """Affichage d'un bloc de bouclier"""
+    def afficherBouclier(self, sprite):
         spriteShield = sprite
-        img_shield = Fonctions.Canevas.create_image(self.__posX, self.__posY, image = spriteShield)
-        self.__img = img_shield
+        img_shield = Fonctions.Canevas.create_image(self._posX ,self._posY , image = spriteShield)
+        self._img = img_shield
         Fonctions.Canevas.image = spriteShield 
-    
-    

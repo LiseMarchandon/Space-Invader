@@ -9,7 +9,7 @@ import Fonctions
 import Niveau
 
 '''Objet joueur'''
-class Joueur:
+class Vaisseaus:
 
     '''Initialisation du joueur'''
 
