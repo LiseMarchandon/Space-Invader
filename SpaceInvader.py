@@ -40,9 +40,6 @@ menu1.add_command(label="Nouvelle partie", command = lambda vaisseau=monVaisseau
 menu1.add_separator()
 menu1.add_command(label="Quitter", command=Fonctions.maFenetre.destroy)
 menubar.add_cascade(label="Jeu", menu=menu1)
-menu2 = Menu(menubar, tearoff=0)
-menu2.add_command(label="A propos")
-menubar.add_cascade(label="Aide", menu=menu2)
 Fonctions.maFenetre.config(menu=menubar)
 
 """Affichage des éléments"""
