@@ -52,7 +52,7 @@ class Niveau:
         Fonctions.Canevas.bind("<KeyPress>", Fonctions.Clavier)
         self.setupEnnemies(vaisseau)
         self.setupShield()
-        self.attaqueEnemy(vaisseau)
+        self.attaqueEnnemy(vaisseau)
         self.setupHUD(vaisseau)
         self.specialEnnemy()
         self.victoire()
