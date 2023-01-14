@@ -7,7 +7,7 @@ To Do:
 from tkinter.messagebox import askyesno
 
 """Initialisation"""
-L_missile=[]
+L_missile = []
 nbmissile = 0
 canTouche = True
 shot_rate = 500
@@ -17,7 +17,9 @@ def Clavier(event):
 
     '''
     cette fonction gère les touches du clvier
-    Importation à l'intérieur car probleme du cycle d'importation (vue sur internet) 
+    Importation à l'intérieur car probleme du cycle d'importation (vue sur internet)
+    entrées: pression d'une touche (event) 
+    sortie : pas de sortie
     '''
 
     from Missile import Missile 
@@ -31,8 +33,8 @@ def Clavier(event):
         posX -= 20
         
     if touche == "space" and canTouche == True:
-            m=Missile(posX, Hauteur - 50 - spriteVaisseau.height() / 2, nbmissile, -20, "missile2.png")
-            nbmissile+=1
+            m = Missile(posX, Hauteur - 50 - spriteVaisseau.height() / 2, nbmissile, -20, "missile2.png")
+            nbmissile += 1
             L_missile.append(m)
             m.afficherMissile()
             tir()
@@ -63,6 +65,8 @@ def gestionMissile(vaisseau, level):
 
     '''
     cette fonction gère les missiles, les collisions et le deplacement de ceux ci
+    entrées: objet vaisseau, objet level
+    sortie : pas de sortie
     '''
 
     global L_missile, maFenetre
@@ -86,6 +90,8 @@ def gameOver(vaisseau, level):
 
     '''
     cette fonction gère le jeu en cas de défaite
+    entrées: objet vaisseau, objet level
+    sortie : pas de sortie
     '''
 
     global maFenetre, Canevas
