@@ -16,8 +16,15 @@ import random
 
 
 class Niveau:
-    """Initialisation de l'objet niveau"""
+
     def __init__(self, ligne, colonne):
+
+        '''
+        cette méthode initialise l'objet "niveau"
+        entrées: l'objet visé, ligne, colonne 
+        sorties: pas de sortie
+        '''
+
         self._ligne = ligne
         self._colonne = colonne
         self._itsOver = False
@@ -25,16 +32,34 @@ class Niveau:
         self._victoire = False
         self._tab_Special = []
     
-    
-    """Fonctions permettant de recupérer les attributs de l'objet à l'extérieur"""
     def getItsOver(self):
+
+        '''
+        cette méthode permet de savoir si le jeu est fini
+        entrées: l'objet visé
+        sorties: boolean
+        '''
+    
         return self._itsOver
 
     def getVictoire(self):
+
+        '''
+        cette méthode permet de savoir si le joueur a gagné
+        entrées: l'objet visé
+        sorties: boolean
+        '''
+
         return self._victoire
     
     def setupLevel(self, vaisseau):
-        """Initialise les paramètres d'un niveau"""
+
+        '''
+        cette méthode initialise les paramètre du niveau
+        entrées: l'objet visé, le joueur 
+        sorties: pas de sortie
+        '''
+
         self.resetLevel(vaisseau)
         Fonctions.Canevas.bind("<KeyPress>", Fonctions.Clavier)
         self.setupEnnemies(vaisseau)
@@ -49,7 +74,13 @@ class Niveau:
             Fonctions.gestionMissile(vaisseau, self)
    
     def setupEnnemies(self, vaisseau):
-        """Gestion du tableau d'ennemies """
+
+        '''
+        cette méthode gère la liste des ennemies
+        entrées: l'objet visé, le joueur
+        sorties: pas de sortie
+        '''
+
         from Ennemie import Ennemie
         global tableau, spriteEnnemy, compteurX, compteurY, deplacementDroite, offsetX, offsetY
         
@@ -73,7 +104,13 @@ class Niveau:
         
         
     def deplacementEnnemies(self, vaisseau):
-        """Deplacement des ennemies"""
+
+        '''
+        cette méthode gère le déplacement des ennemies
+        entrées: l'objet visé, le joueur
+        sorties: pas de sortie
+        '''
+
         global tableau, spriteEnnemy, compteurX, compteurY, deplacementDroite, offsetX, offsetY
         
         descente = False
@@ -104,7 +141,13 @@ class Niveau:
             Fonctions.maFenetre.after(100, self.deplacementEnnemies, vaisseau)
         
     def attaqueEnnemy(self, vaisseau):
-        """Tire aléatoire des ennemies"""
+
+        '''
+        cette méthode permet aux ennemies de tirer alétoirement 
+        entrées: l'objet visé, le joueur
+        sorties: pas de sortie
+        '''
+
         if(vaisseau.isAlive()):
             tirage = random.randint(0, self._colonne - 1)
             for i in range(self._ligne):
@@ -115,7 +158,13 @@ class Niveau:
             Fonctions.maFenetre.after(500, self.attaqueEnnemy, vaisseau)
             
     def resetLevel(self, vaisseau):
-        """Reinitialisation du niveau en cas de victoire ou defaite"""
+
+        '''
+        cette méthode réinitialise le niveau en cas de victoire ou défaite
+        entrées: l'objet visé, le joueur 
+        sorties: pas de sortie
+        '''
+
         vaisseau.setVie(3)
         for i in range(len(Fonctions.L_missile)):
             Fonctions.Canevas.delete(Fonctions.L_missile[i].getImg())
@@ -126,6 +175,12 @@ class Niveau:
             vaisseau.setScore(0)
         
     def setupShield(self):
+
+        '''
+        cette méthode initialise la liste des boucliers
+        entrées: l'objet visé
+        sorties: pas de sortie
+        '''
         """Initialisation du tableau de bouclier"""
         from Bouclier import Bouclier
         global spriteShield, L_rocher, pattern_rocher
@@ -151,7 +206,13 @@ class Niveau:
                     L_rocher[i][j] = roc
                     
     def setupHUD(self, vaisseau):
-        """Initialise l'interface du jeu comme les points de vie"""
+
+        '''
+        cette méthode initialise l'interface du jeu ainsi que les points de vie 
+        entrées: l'objet visé, le joueur
+        sorties: pas de sortie
+        '''
+
         global spriteCoeur, tabCoeur, label_score
         
         spriteCoeur = PhotoImage(file = 'vie.png')
@@ -166,12 +227,24 @@ class Niveau:
     
     
     def affichageScore(self, vaisseau, sc):
-        """Affiche le score"""
+
+        '''
+        cette méthode affiche le score
+        entrées: l'objet visé, le joueur, le score sous forme d'un entier
+        sorties: pas de sortie
+        '''
+
         sc.set("Score : " + str(vaisseau.getScore()))
         Fonctions.maFenetre.after(200, self.affichageScore, vaisseau, sc)
         
     def victoire(self):
-        """Test si on a un cas de victoire"""
+
+        '''
+        cette méthode test si il s'agit d'une victoire
+        entrées: l'objet visé
+        sorties: pas de sortie
+        '''
+
         global tableau
         self._victoire = True
         for i in range(len(tableau)):
@@ -181,7 +254,14 @@ class Niveau:
         Fonctions.maFenetre.after(100, self.victoire)
     
     def finNiveau(self, vaisseau):
-        """Apparition d'une fenêtre en cas de victorie"""
+
+
+        '''
+        cette méthode permet d'afficher une nouvelle fenêtre en cas de victoire
+        entrées: l'objet visé
+        sorties: pas de sortie
+        '''
+
         if self.getVictoire() == True:
             if askyesno("Victoire", "Voulez-vous rejouer ?"):
                 self.setupLevel(vaisseau)
@@ -191,7 +271,13 @@ class Niveau:
             Fonctions.maFenetre.after(100, self.finNiveau, vaisseau)
 
     def specialEnnemy(self):
-        """Apparition d'un ennemie special"""
+
+        '''
+        cette méthode permet d'afficher l'ennemi special qui rapporte plus de points
+        entrées: l'objet visé
+        sorties: pas de sortie
+        '''
+
         global spriteSpecial
         special = Ennemie('Special', "sourisboss.png", 82, 100, 40, 150)
         spriteSpecial = PhotoImage(file = str(special.getImg()))
@@ -200,7 +286,13 @@ class Niveau:
         Fonctions.maFenetre.after(100, self.depSpecial, special, spriteSpecial, True, 0)
         
     def depSpecial(self, special, sprite, direction, compteur):
-        """Gere le deplacement de l'ennemie special et le fait apparaitre quelques secondes"""
+
+        '''
+        cette méthode gère le déplacement de l'ennemie spécial et le fait apparaître quelques secondes
+        entrées: l'objet visé, l'ennemie special, photo de l'ennemi special, boolean = True pour savoir la direction de déplacement de l'ennemie, compteur du temps
+        sorties: pas de sortie
+        '''
+
         pX, pY = special.getPos()
         versDroite = direction
         if pX + sprite.width()/2 > Fonctions.Largeur and versDroite == True:

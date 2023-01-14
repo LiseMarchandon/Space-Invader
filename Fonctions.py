@@ -12,9 +12,14 @@ nbmissile = 0
 canTouche = True
 shot_rate = 500
 
-"""Fonction gestion des touches du clavier"""
+
 def Clavier(event):
-    """Importation à l'intérieur car probleme du cycle d'importation (vue sur internet) """
+
+    '''
+    cette fonction gère les touches du clvier
+    Importation à l'intérieur car probleme du cycle d'importation (vue sur internet) 
+    '''
+
     from Missile import Missile 
     
     global posX, img_vaisseau, Canevas, Hauteur, Largeur, maFenetre, L_missile, nbmissile, spriteVaisseau, canTouche
@@ -35,19 +40,33 @@ def Clavier(event):
     Canevas.coords(img_vaisseau, posX, Hauteur-30)
     
 def tir():
-    """Permet de limiter la cadence de tir"""
+
+    '''
+    cette fonction permet de limiter la cadence de tir
+    '''
+
     global canTouche, maFenetre
+
     canTouche = False
     maFenetre.after(shot_rate, shoot)
     
 def shoot():
-    """Pareil que précédemment"""
+    
+    '''
+    cette fonction permet de limiter la cadence de tir
+    '''
+    
     global canTouche
     canTouche = True
     
 def gestionMissile(vaisseau, level):
-    """Gère les missiles, les collisions et le deplacement de ceux ci"""
+
+    '''
+    cette fonction gère les missiles, les collisions et le deplacement de ceux ci
+    '''
+
     global L_missile, maFenetre
+
     if(vaisseau.isAlive()):
         for i in range(len(L_missile)):
             pX, pY = L_missile[i].getPos()
@@ -64,7 +83,11 @@ def gestionMissile(vaisseau, level):
     
     
 def gameOver(vaisseau, level):
-    """Gère le jeu en cas de défaite"""
+
+    '''
+    cette fonction gère le jeu en cas de défaite
+    '''
+
     global maFenetre, Canevas
     if(vaisseau.isAlive() == False):
         if askyesno("Défaite", "Voulez-vous rejouer ?"):

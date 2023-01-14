@@ -36,7 +36,7 @@ Fonctions.Canevas.focus_set()
 """Menu du jeu"""
 menubar = Menu(Fonctions.maFenetre)
 menu1 = Menu(menubar, tearoff=0)
-menu1.add_command(label="Nouvelle partie", command = lambda vaisseau=monVaisseau:monNiveau.setupLevel(vaisseau))
+menu1.add_command(label="Nouvelle partie", command = lambda vaisseau=monVaisseau:monNiveau.setupLevel(vaisseau)) #fonction lambda qui nous permet d'associer à l'élément vaisseau un niveau pour lancer le jeu
 menu1.add_separator()
 menu1.add_command(label="Quitter", command=Fonctions.maFenetre.destroy)
 menubar.add_cascade(label="Jeu", menu=menu1)
