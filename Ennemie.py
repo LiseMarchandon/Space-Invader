@@ -1,5 +1,5 @@
 '''
-ce fichier a pour but de gérer les 
+ce fichier a pour but de gérer les ennemis
 date de début: 07/01/2022
 MARIOTTE Mélanie & MARCHANDON Lise
 To Do: 
@@ -88,32 +88,55 @@ class Ennemie:
 
         return self._sprite
     
-    """Fonctions permettant de modifier les attributs de l'objet à l'extérieur"""
+    
     def setIdent(self, ident):
+        """
+        Fonction permettant de modifier l'identifiant de l'ennemie
+        entrées: objet ennemie, identifiant
+        sorties: pas de sortie
+        """
         self._ident = ident
     
     def setPos(self, x, y):
+         """
+        Fonction permettant de modifier la position de l'ennemie
+        entrées: objet ennemie, position selon x, position selon y
+        sorties: pas de sortie
+        """
         self._x = x
         self._y = y
         Fonctions.Canevas.coords(self._img, self._x, self._y)
     
     
     def affichageEnnemy(self, sprite):
-        """Affichage de l'ennemie vivant"""
+        """
+        fonction qui affiche l'ennemie vivant
+        entrées: objet ennemie, représentation
+        sorties: pas de sortie
+        """
         spriteEnnemy = sprite
         img_ennemy = Fonctions.Canevas.create_image(self._x ,self._y , image = spriteEnnemy)
         self._img = img_ennemy
         Fonctions.Canevas.image = spriteEnnemy  
     
     def affichageEnnemyMort(self, sprite):
-        """Affichage de l'ennemie mort"""
+        
+        """
+        fonction qui affiche l'ennemie mort
+        entrées: objet ennemie, représentation
+        sorties: pas de sortie
+        """
         spritMort = sprite
         img_mort = Fonctions.Canevas.create_image(self._x, self._y, image = spritMort)
         self._imgMort = img_mort
         Fonctions.Canevas.image = spritMort
 
     def attaque(self):
-        """Lance un missile ennemie"""
+         """
+        fonction qui permet de lancer un missile ennemi
+        entrées: objet ennemie
+        sorties: pas de sortie
+        """
         from Missile import Missile
         self._missile = Missile(self._x, self._y + 70, Fonctions.nbmissile, 20, "missilesouris.png")
         Fonctions.nbmissile += 1

@@ -1,5 +1,5 @@
 '''
-ce fichier a pour but 
+ce fichier a pour but de gérer les ilots boucliers du jeu
 date de début: 08/12/2022
 MARIOTTE Mélanie & MARCHANDON Lise
 To Do: 

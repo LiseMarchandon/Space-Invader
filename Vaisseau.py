@@ -1,5 +1,5 @@
 '''
-ce fichier a pour but de regrouper les Fonctions générales du jeu 
+ce fichier a pour but de gérer le joueur 
 date de début: 05/12/2022
 MARIOTTE Mélanie & MARCHANDON Lise
 To Do: 
