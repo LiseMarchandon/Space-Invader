@@ -2,7 +2,7 @@
 ce fichier a pour but d'être le fichier où on lance le code principal du jeu 
 date de début: 05/12/2022
 MARIOTTE Mélanie & MARCHANDON Lise
-To Do: 
+To Do: rajouter un autre menu pour la partie 'À Propos', cheat-codes, demande à l'utilisateur de renseigner son nom
 version pyhton 3.7
 '''
 
