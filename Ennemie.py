@@ -98,7 +98,7 @@ class Ennemie:
         self._ident = ident
     
     def setPos(self, x, y):
-         """
+        """
         Fonction permettant de modifier la position de l'ennemie
         entrées: objet ennemie, position selon x, position selon y
         sorties: pas de sortie
@@ -132,7 +132,7 @@ class Ennemie:
         Fonctions.Canevas.image = spritMort
 
     def attaque(self):
-         """
+        """
         fonction qui permet de lancer un missile ennemi
         entrées: objet ennemie
         sorties: pas de sortie

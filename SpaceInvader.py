@@ -21,7 +21,8 @@ monNiveau = Niveau(2, 6)
 Fonctions.maFenetre = Tk()
 Fonctions.Largeur = 800
 Fonctions.Hauteur = 600
-Fonctions.posX = Fonctions.Largeur / 2 
+Fonctions.posX = Fonctions.Largeur / 2
+Fonctions.maFenetre.title('Space Invader') 
 
 """Fenêtre du jeu"""
 Fonctions.Canevas = Canvas(Fonctions.maFenetre, width = Fonctions.Largeur, height = Fonctions.Hauteur)

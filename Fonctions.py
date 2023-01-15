@@ -95,6 +95,7 @@ def gameOver(vaisseau, level):
     '''
 
     global maFenetre, Canevas
+    
     if(vaisseau.isAlive() == False):
         if askyesno("Défaite", "Voulez-vous rejouer ?"):
             level.setupLevel(vaisseau)
