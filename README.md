@@ -1,6 +1,6 @@
 # Space-Invader
 
-Bienvenu au Space Invader de Lise et Mélanie!
+Bienvenue au Space Invader de Lise et Mélanie!
 
 Participants: Lise MARCHANDON & Mélanie MARIOTTE
 
