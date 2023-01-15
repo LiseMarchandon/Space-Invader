@@ -14,4 +14,6 @@ Afin de déplacer le petit chat, tu devras utiliser les touches 'q' et 'd' pour 
 
 Attention: le déplacement du petit chat n'est pas fluide, c'est-à-dire que si tu tapes sur la touche 'd' pour te déplacer à droite il faudra réappuyer pour faire un autre déplacement à droite
 
+------------------------------------------------------------------------------
+Nous nous servons de listes pour créer des tableaux afin de positionner nos différents personnages sur l'écran, notamment les souris sous forme d'une grille. 
 
