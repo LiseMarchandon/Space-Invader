@@ -3,6 +3,8 @@ ce fichier a pour but de gérer les différents niveaux du jeu
 date de début: 08/01/2022
 MARIOTTE Mélanie & MARCHANDON Lise
 To Do: 
+- simplifier la méthode setupShield puisque le nombre d'indentations est trop élévé donc un compléxité assez importante, faudrait créer une autre méthode qui compare la valeur du pattern à 1 et si ceci est le cas elle renvoit un boolean = True,  cette méthode serait donc appelée dans la méthode setupShield
+- même principe pour la méthode deplacementEnnemies où il y a beaucou d'indentations
 '''
 
 from tkinter import PhotoImage
@@ -181,7 +183,7 @@ class Niveau:
         entrées: l'objet visé
         sorties: pas de sortie
         '''
-        """Initialisation du tableau de bouclier"""
+
         from Bouclier import Bouclier
         global spriteShield, L_rocher, pattern_rocher
         
@@ -190,7 +192,7 @@ class Niveau:
         L_rocher = []
         x = Fonctions.Largeur
         nb_slot = x / spriteShield.width()
-        pattern = [0,1,1,1,0]
+        pattern = [0,1,1,1,0] #pattern qui permet d'établir la disposition des boucliers dans les blocs
         pattern_rocher = [pattern for i in range(int(nb_slot / len(pattern)))]
         pat = []
         
